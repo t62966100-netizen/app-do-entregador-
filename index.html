@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motoboy - Moto Entrega</title>
+    <style>
+      :root {
+    --primary: #2ecc71;
+    --dark: #2c3e50;
+    --light: #f4f7f6;
+    --white: #ffffff;
+    --gray: #95a5a6;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body { background-color: var(--light); color: var(--dark); }
+
+.screen { padding: 20px; max-width: 500px; margin: auto; min-height: 100vh; }
+.hidden { display: none !important; }
+
+/* Auth Styling */
+.header-auth { text-align: center; margin: 50px 0; }
+.header-auth h1 { font-size: 2.5rem; color: var(--dark); }
+.header-auth span { color: var(--primary); }
+
+.form-container input {
+    width: 100%; padding: 15px; margin-bottom: 15px;
+    border: 1px solid #ddd; border-radius: 10px; font-size: 1rem;
+}
+
+.btn-main {
+    width: 100%; padding: 15px; background: var(--primary);
+    color: white; border: none; border-radius: 10px;
+    font-size: 1.1rem; font-weight: bold; cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.link-auth { text-align: center; margin-top: 20px; color: var(--primary); cursor: pointer; }
+
+/* App Header */
+.app-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.btn-logout { background: none; border: none; font-size: 1.2rem; color: #e74c3c; }
+
+/* Cards */
+.card-order, .status-card {
+    background: var(--white); padding: 20px; border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px;
+}
+
+.price-box {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #f9f9f9; padding: 10px; border-radius: 8px; margin: 15px 0;
+}
+
+.badge {
+    display: inline-block; padding: 5px 15px; border-radius: 20px;
+    background: #f1c40f; color: white; font-weight: bold; margin-bottom: 10px;
+}
+
+.btn-whatsapp {
+    display: flex; align-items: center; justify-content: center;
+    background: #25d366; color: white; text-decoration: none;
+    padding: 12px; border-radius: 10px; margin-top: 15px; font-weight: bold;
+}
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- Login / Cadastro igual ao cliente, apenas mudando as funções -->
+        <section id="screen-login" class="screen">
+            <div class="header-auth">
+                <h1>Moto<span>Boy</span></h1>
+                <p>Ganhe dinheiro entregando</p>
+            </div>
+            <div class="form-container">
+                <input type="email" id="login-email" placeholder="E-mail">
+                <input type="password" id="login-senha" placeholder="Senha">
+                <button onclick="login()" class="btn-main">Entrar</button>
+                <button onclick="showScreen('screen-register')" style="margin-top:10px; background:#34495e" class="btn-main">Cadastrar Motoboy</button>
+            </div>
+        </section>
+
+        <section id="screen-register" class="screen hidden">
+            <div class="header-auth"><h1>Cadastro Motoboy</h1></div>
+            <div class="form-container">
+                <input type="text" id="reg-nome" placeholder="Nome Completo">
+                <input type="tel" id="reg-tel" placeholder="Telefone">
+                <input type="email" id="reg-email" placeholder="E-mail">
+                <input type="password" id="reg-senha" placeholder="Senha">
+                <button onclick="register()" class="btn-main">Cadastrar</button>
+            </div>
+        </section>
+
+        <!-- Painel do Motoboy -->
+        <section id="screen-home" class="screen hidden">
+            <header class="app-header">
+                <span>Painel <b>Motoboy</b></span>
+                <button onclick="logout()" class="btn-logout">Sair</button>
+            </header>
+
+            <div id="active-delivery" class="hidden">
+                <!-- Entrega que ele aceitou aparece aqui -->
+            </div>
+
+            <div id="available-list">
+                <h3>Entregas Disponíveis</h3>
+                <div id="lista-pedidos">
+                    <!-- Pedidos aparecem aqui -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
